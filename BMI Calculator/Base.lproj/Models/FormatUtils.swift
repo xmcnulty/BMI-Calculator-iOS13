@@ -10,7 +10,7 @@ import Foundation
 
 
 /// Utility functions for BMI calculator app.
-class BMIUtilities {
+class FormatUtils {
     
     /// Converts floating point height value to String for display. Returns a number with two decimals followed by units (m)
     /// - Parameter height: height as float

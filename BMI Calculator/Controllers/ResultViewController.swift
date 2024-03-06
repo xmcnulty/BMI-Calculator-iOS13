@@ -12,20 +12,20 @@ class ResultViewController: UIViewController {
     @IBOutlet weak var bmiLabel: UILabel!
     @IBOutlet weak var adviceLabel: UILabel!
     
-    var bmi: Float?
+    var bmi: BMI?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        if let bmiVal = bmi {
-            bmiLabel.text = String(format: "%.1f", bmiVal)
-        } else {
-            bmiLabel.text = "--.-"
-        }
+        
+        bmiLabel.text = bmi?.formatted() ?? "--.-"
+        
+        adviceLabel.text = bmi?.advice ?? "Something went wrong :("
+        
+        view.backgroundColor = bmi?.color ?? .blue
     }
     
     @IBAction func recalculatePressed(_ sender: UIButton) {
+        self.dismiss(animated: true)
     }
     
     /*

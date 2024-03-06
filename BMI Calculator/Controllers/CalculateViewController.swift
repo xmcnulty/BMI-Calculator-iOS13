@@ -14,26 +14,26 @@ class CalculateViewController: UIViewController {
     @IBOutlet weak var heightSlider: UISlider!
     @IBOutlet weak var weightSlider: UISlider!
     
-    var bmi: Float?
+    var bmi: BMI?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        heightLabel.text = BMIUtilities.formatHeight(heightSlider.value)
-        weightLabel.text = BMIUtilities.formatWeight(weightSlider.value)
+        heightLabel.text = FormatUtils.formatHeight(heightSlider.value)
+        weightLabel.text = FormatUtils.formatWeight(weightSlider.value)
     }
 
     @IBAction func heightSliderChanged(_ sender: UISlider) {
-        heightLabel.text = BMIUtilities.formatHeight(sender.value)
+        heightLabel.text = FormatUtils.formatHeight(sender.value)
     }
     
     
     @IBAction func weightSliderChanged(_ sender: UISlider) {
-        weightLabel.text = BMIUtilities.formatWeight(sender.value)
+        weightLabel.text = FormatUtils.formatWeight(sender.value)
     }
     
     @IBAction func calculatePressed(_ sender: UIButton) {
-        bmi = BMIUtilities.calculateBMI(height: heightSlider.value, weight: weightSlider.value)
+        bmi = BMICalculator.calculateBMI(weight: weightSlider.value, height: heightSlider.value)
         
         self.performSegue(withIdentifier: "goToResult", sender: self)
     }

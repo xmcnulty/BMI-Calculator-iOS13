@@ -7,3 +7,12 @@
 //
 
 import Foundation
+
+struct BMICalculator {
+    static let shared = BMICalculator()
+    
+    static func calculateBMI(weight: Float, height: Float) -> BMI {
+        let bmiValue = weight / (height * height)
+        return BMI(value: bmiValue)
+    }
+}
